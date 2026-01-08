@@ -3,6 +3,8 @@ import cors from 'cors'
 import dotenv from "dotenv";
 
 import connectDB from "./mongodb.js";
+import organizerroutes from "./routes/organizer.routes.js";
+import userroutes from "./routes/user.routes.js";
 
 dotenv.config();   
 
@@ -18,9 +20,11 @@ app.get('/',(req,res)=>{
    res.send("Backend Working")
 })
  
-
+app.use('/api/v1/organizer',organizerroutes)
+app.use('/api/v1/user',userroutes)
  
 app.listen(port,()=>{ 
     connectDB();
     console.log(`server running on port ${port}` )
 })  
+ 
