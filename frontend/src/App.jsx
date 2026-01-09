@@ -1,10 +1,9 @@
 import React from "react";
+import Home from "./pages/Home";
 
 const App = () => {
-  return <div  >  
-
-    <p className="text-2xl  " > hello </p>
-  </div>;
+  return <Home />;
 };
 
 export default App;
+
