@@ -9,7 +9,7 @@ const Home = () => {
 
       <div className="text-3xl m-60">Home page</div>
 
-      <Footer />
+      <Footer /> 
     </>
   );
 };

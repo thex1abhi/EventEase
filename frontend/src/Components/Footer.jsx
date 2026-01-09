@@ -13,7 +13,7 @@ const Footer = () => {
           <nav className="flex space-x-4">
             <a href="/" className="text-sm hover:text-white">Home</a>
             <a href="/about" className="text-sm hover:text-white">About</a>
-            <a href="/contact" className="text-sm hover:text-white">Contact</a>
+          
           </nav>
 
           <div className="flex space-x-3">
