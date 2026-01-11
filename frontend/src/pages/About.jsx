@@ -32,7 +32,7 @@ const About = () => {
           </div>
         </section>
 
-        <section className="mt-10 text-center">
+        <section className="mt-10 mb-2 text-center">
           <p className="text-sm text-slate-500">Built with ❤️ for organizers and attendees. Want more features? Open an issue or submit a PR on GitHub.</p> 
         </section>
       </main>

@@ -1,10 +1,38 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const Navbar = () => {
+
+   const [isloggedIn, setIsloggedIn] = useState(false);
+    
+   const navigate=useNavigate();
+
+   useEffect(() => {
+    const userToken=localStorage.getItem("user_token");
+   const adminToken=localStorage.getItem("org_token"); 
+    
+   if(userToken || adminToken){
+    setIsloggedIn(true)
+   }else{
+    setIsloggedIn(false)
+   }   
+   }, []);
+   
+  const handlelogout=()=>{
+    localStorage.removeItem("user_token") 
+    localStorage.removeItem("org_token") 
+    setIsloggedIn(false); 
+    toast.success("Logout Successfull")
+    navigate("/")
+  }
+
   return (
+
+
+
     <nav className="bg-white shadow">
-      <div className="container mx-auto px-4 py-4 flex items-center justify-between">
+      <div className="container mx-auto px-3 py-3  flex items-center justify-between">
         <Link to="/" className="text-xl font-semibold">
           EventEase
         </Link>
@@ -16,6 +44,23 @@ const Navbar = () => {
           <Link to="/about" className="text-slate-700 hover:text-black">
             About
           </Link>
+
+ { isloggedIn ? (
+     <button onClick={handlelogout} className=" bg-red-600 px-3 py-2  cursor-pointer rounded-xl text-white" >Logout </button> 
+     
+ ) :(  
+   <div> 
+      <Link to="/user-signup" className="text-slate-700 mx-2 hover:text-black" >
+            Signup
+          </Link  >
+             <Link to="/user-login" className="text-slate-700 hover:text-black"  >  
+             Login</Link> 
+             </div>  
+ )
+ }
+ 
+
+
         </div>
       </div>
     </nav>

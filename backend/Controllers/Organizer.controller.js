@@ -36,8 +36,8 @@ const organizerlogin = async (req, res) => {
         if (!comparepassword) {
             return res.status(401).json({ success: false, message: "Invalid Credentials" })
         } 
-        const token = jwt.sign({ id: organizer._id }, process.env.JWT_SECRET)
-        return res.status(200).json({ success: true, message: "  Login Successfull", token });
+        const org_token = jwt.sign({ id: organizer._id }, process.env.JWT_SECRET)
+        return res.status(200).json({ success: true, message: "  Login Successfull", org_token });
     } catch (error) {
         console.log(error) 
         return res.status(500).json({ errors: error })
