@@ -41,19 +41,17 @@ const Navbar = () => {
           <Link to="/" className="text-slate-700 hover:text-black">
             Home
           </Link>
-          <Link to="/about" className="text-slate-700 hover:text-black">
-            About
-          </Link>
+         
 
  { isloggedIn ? (
      <button onClick={handlelogout} className=" bg-red-600 px-3 py-2  cursor-pointer rounded-xl text-white" >Logout </button> 
      
  ) :(  
    <div> 
-      <Link to="/user-signup" className="text-slate-700 mx-2 hover:text-black" >
+      <Link to="/user-signup" className="text-slate-700 mx-3 hover:text-black" >
             Signup
           </Link  >
-             <Link to="/user-login" className="text-slate-700 hover:text-black"  >  
+             <Link to="/user-login" className="text-slate-700 mx-3 hover:text-black"  >  
              Login</Link> 
              </div>  
  )
