@@ -23,7 +23,7 @@ const reviews = [
 
 const Reviews = () => {
   return (
-    <div className="m-5  px-6 py-4">
+    <div className="m-2  px-7 md:px-6 py-4">
       
 
       <div className="max-w-xl mx-auto">
@@ -41,7 +41,7 @@ const Reviews = () => {
         {reviews.map((review) => (
           <div
             key={review.id}
-            className="bg-gray-100  grid grid-cols-3  p-5 rounded-xl shadow mb-4"
+            className="bg-gray-100  grid  md:grid-cols-3  p-5 rounded-xl shadow mb-4"
           >
             <h3 className="font-semibold">{review.name}</h3>
 

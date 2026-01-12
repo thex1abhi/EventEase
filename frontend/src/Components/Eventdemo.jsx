@@ -29,7 +29,7 @@ const events = [
 
 const Events = () => {
   return (
-    <div className="  px-30 py-10">
+    <div className="  md:px-30 mx-5 py-10">
       <h1 className="text-3xl font-bold text-center mb-10">
         Upcoming Events
       </h1>
