@@ -21,41 +21,80 @@ const reviews = [
   },
 ];
 
-const Reviews = () => {
-  return (
-    <div className="m-2  px-7 md:px-6 py-4">
-      
+const Stars = ({ rating, className = "" }) => (
+  <div className={`flex items-center ${className}`}>
+    {Array.from({ length: 5 }).map((_, i) => (
+      <span
+        key={i}
+        className={
+          i < rating ? "text-yellow-400" : "text-gray-300"
+        }
+      >
+        ★
+      </span>
+    ))}
+  </div>
+);
 
-      <div className="max-w-xl mx-auto">
-    
-        <div className="bg-gray-300 p-6 rounded-xl shadow mb-6 text-center"> 
-            
-      Event Reviews   ⭐ 4.5 / 5 
-        
-          <p className="text-gray-500">Based on 120 reviews</p>
-      
-          
+const Reviews = () => {
+  const total = reviews.length;
+  const average = (reviews.reduce((s, r) => s + r.rating, 0) / total).toFixed(1);
+
+  return (
+    <section className="my-6 px-4 md:px-6 py-6">
+      <div className="max-w-3xl mx-auto">
+        {/* Header */}
+        <div className="bg-slate-800 text-gray-300 p-6 rounded-xl shadow mb-6">
+          <div className="flex items-center justify-between">
+            <div>
+              <h2 className="text-2xl font-bold">Event Reviews</h2>
+              <p className="text-indigo-100 mt-1">
+                What attendees are saying about the events
+              </p>
+            </div>
+
+            <div className="text-right">
+              <div className="flex items-center justify-end">
+                <div className="text-3xl font-extrabold mr-3">{average}</div>
+                <div className="text-sm">
+                  <Stars rating={Math.round(average)} />
+                  <div className="text-indigo-100 text-xs mt-1">
+                    Based on {total} reviews
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
-        {/* Reviews */}
-        {reviews.map((review) => (
-          <div
-            key={review.id}
-            className="bg-gray-100  grid  md:grid-cols-3  p-5 rounded-xl shadow mb-4"
-          >
-            <h3 className="font-semibold">{review.name}</h3>
+        {/* Reviews list */}
+        <div className="space-y-4">
+          {reviews.map((review) => (
+            <article
+              key={review.id}
+              className="bg-white border border-gray-100 rounded-xl shadow-sm p-4 md:p-5 grid md:grid-cols-6 gap-4 items-start"
+            >
+              
 
-            <p className="text-yellow-400">
-              {"⭐".repeat(review.rating)}
-            </p>
+              {/* Content */}
+              <div className="md:col-span-4">
+                <div className="flex items-center justify-between">
+                  <h3 className="font-semibold text-gray-800">{review.name}</h3>
+                  <div className="text-sm text-gray-500">{review.rating}/5</div>
+                </div>
 
-            <p className="text-gray-600 mt-2">
-              {review.comment}
-            </p>
-          </div>
-        ))}
+                <p className="text-gray-600 mt-2">{review.comment}</p>
+              </div>
+
+              {/* Stars */}
+              <div className="md:col-span-1 flex items-center justify-end">
+                <Stars rating={review.rating} className="text-lg" />
+              </div>
+            </article>
+          ))}
+        </div>
       </div>
-    </div>
+    </section>
   );
 };
 
