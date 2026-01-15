@@ -6,7 +6,7 @@ const EventSchema = new mongoose.Schema(
             type: String,
             required: true
         },
-        City: {
+        city: {
             type: String,
             required: true
         },
@@ -17,6 +17,10 @@ const EventSchema = new mongoose.Schema(
         date: {
             type: String,
             required: true
+        },  
+        price:{
+            type:Number,
+            required:true
         },
         image: {
             type: String,
