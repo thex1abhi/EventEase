@@ -2,6 +2,8 @@ import multer from "multer"
 import { v2 as cloudinary } from "cloudinary"
 import { CloudinaryStorage } from "multer-storage-cloudinary"
 import Event from "../models/createevent.js"
+import dotenv from "dotenv";
+dotenv.config(); 
 
 // Configure Cloudinary
 cloudinary.config({
@@ -9,6 +11,8 @@ cloudinary.config({
     api_key: process.env.CLOUDINARY_API_KEY,
     api_secret: process.env.CLOUDINARY_API_SECRET,
 })
+
+
 
 // Create multer upload middleware
 const storage = new CloudinaryStorage({
@@ -23,14 +27,14 @@ export const upload = multer({ storage });
 
 const EventController = async (req, res) => {
     try {
-        const { name, city, address, date, price } = req.body;
+        const { name, city, address, date, price, type } = req.body;
         const imageUrl = req.file?.path || "";
         
-        if (!name || !city || !address || !date || !price || !imageUrl) {
+        if (!name || !city || !address || !date || !price || !type || !imageUrl) {
             return res.json({ success: false, error: "All fields are required including image" })
         }
 
-        const event = new Event({ name, city: city, address, date, price, image: imageUrl });
+        const event = new Event({ name, city, address, date, price, type, image: imageUrl });
         await event.save();
         return res.json({ success: true, message: "Event Created Successfully", event })
 
