@@ -15,6 +15,7 @@ const Createevent = () => {
     city: "",
     address: "",
     date: "",
+    price:null,
     type: "",
     image: null,
   });
@@ -37,10 +38,10 @@ const Createevent = () => {
 
 
     try {
-      const response = await axios.post(`${backendurl}/create-event"`, data, {
+      const response = await axios.post(`${backendurl}/organizer/create-event`, data, {
         headers: { "content-type": "multipart/form-data" }
       })
-      if (response.success === true) {
+      if (response.data?.success === true) {
         toast.success("Event created ")
         navigate("/events")
 
@@ -60,21 +61,24 @@ const Createevent = () => {
       <form onSubmit={handleSubmit}>
 
         <h2> Create Event  </h2>
-        <input type="text " name="name " onChange={handleChange} placeholder="Event Name" required />
+        <input type="text" name="name" onChange={handleChange} placeholder="Event Name" required />
 
-        <input type="text " name="city" onChange={handleChange} placeholder="Event City" required />
+        <input type="text" name="city" onChange={handleChange} placeholder="Event City" required />
 
-        <input type="text " name="address" onChange={handleChange} placeholder="Event Address" required />
+        <input type="text" name="address" onChange={handleChange} placeholder="Event Address" required />
 
-        <input type="date " name="date" onChange={handleChange} placeholder="Event Date" required />
+        <input type="date" name="date" onChange={handleChange} placeholder="Event Date" required />
+ 
+ <input type="number" name="price" onChange={handleChange} placeholder="Ticket Price" required />
+ 
 
-        <input type="text " name="type" onChange={handleChange} placeholder="Event Type" required />
+        <input type="text" name="type" onChange={handleChange} placeholder="Event Type" required />
 
 
         <input type="file" name="image" onChange={handleChange} required />
 
         <button type="submit"> Create Event  </button>
-        <button onClick={() => setFormData("")} >  </button>
+        <button onClick={() => setFormData("")} > Reset  </button>
       </form>
     </>
   )
