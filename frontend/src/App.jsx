@@ -10,6 +10,7 @@ import Orglogin from "../Organizer/Orglogin"
 import { ToastContainer, toast } from 'react-toastify';
 import Orgdashboard from "../Organizer/Orgdashboard";
 import Createevent from "../Organizer/Createevent";
+import Allevent from "../Organizer/Events";
 
 const App = () => {
   return (
@@ -26,6 +27,7 @@ autoClose={1000} />
         <Route path="/organizer-login" element= { <  Orglogin  /> } /> 
        <Route path="/organizer-dashboard" element={ <Orgdashboard /> }  /> 
          <Route path="/create-event" element={ <Createevent /> }  /> 
+        <Route path="/all-events" element={ <Allevent /> }  /> 
        
       </Routes>
     </BrowserRouter>
