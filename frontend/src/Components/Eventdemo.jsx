@@ -1,75 +1,86 @@
-import React from "react";
-
-const events = [
-  {
-    id: 1,
-    title: "Live Music Concert",
-    date: "25 March 2026",
-    location: "Mumbai",
-    price: "₹999",
-    image:"",
-  },
-  {
-    id: 2,
-    title: "Tech Conference 2026",
-    date: "10 April 2026",
-    location: "Bangalore",
-    price: "₹1499",
-    image:"",
-  },
-  {
-    id: 3,
-    title: "Wedding Expo",
-    date: "5 May 2026",
-    location: "Delhi",
-    price: "₹799",
-    image: ""
-  },
-];
+import React, { useEffect, useState } from "react";
+import { useAppContext } from "../../Context/AppContext"
+import axios from "axios";
 
 const Events = () => {
+
+  const [events, setEvents] = useState([]);
+  const { backendurl } = useAppContext();
+
+  useEffect(() => {
+    const fetchEvents = async () => {
+      try {
+        const { data } = await axios.get(
+          `${backendurl}/organizer/events`
+        );
+
+        // adjust this based on your API response
+        setEvents(data.events || data);
+
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchEvents();
+  }, [backendurl]);
+
   return (
-    <div className="  md:px-30 mx-5 py-10">
-      <h1 className="text-3xl font-bold text-center mb-10">
-        Upcoming Events
-      </h1>
+    <div className=" py-4 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-6xl mx-auto">
+       
+        <div className="mb-5 flex justify-center align-center">
+          <h2 className="md:text-3xl font-bold  text-black mb-2">Latest Events</h2>
+          
+        </div>
 
-      <div className="grid gap-8 md:grid-cols-3">
-        {events.map((event) => (
-          <div
-            key={event.id}
-            className="bg-white rounded-xl shadow-md hover:shadow-xl transition"
-          >
-            <img
-              src={event.image}
-              alt={event.title}
-              className="w-full h-45 object-cover rounded-t-xl"
-            />
+      
+        <div>
+          {events.length > 0 ? (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {events.map(event => (
+                <div 
+                  key={event._id}
+                  className="bg-white rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300 overflow-hidden"
+                >
+                 
+                  <div className="h-40 overflow-hidden bg-gray-200">
+                    <img
+                      src={event.image}
+                      alt={event.name}
+                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-300   "
+                    />
+                  </div>
 
-            <div className="p-5">
-              <h2 className="text-xl font-semibold mb-2">
-                {event.title}
-              </h2>
+                
+                  <div className="p-5  ">
+                   
+                    <div className="flex justify-between items-center gap-3 mb-3">
+                      <h3 className="text-base font-semibold  truncate">{event.name}</h3>
+                      <span className="text-sm font-medium text-gray-600 bg-gray-100 px-3 py-1 rounded-md whitespace-nowrap">City:{event.city}</span>
+                    </div>
 
-              <p className="text-gray-600">
-                📅 {event.date}
-              </p>
-              <p className="text-gray-600">
-                 {event.location}
-              </p>
+                    
+                    <div className="flex justify-between items-center gap-3 mb-3">
+                      <span className="text-sm font-medium text-purple-700 bg-purple-50 px-3 py-1 rounded-md"> Type: {event.type}</span>
+                      <span className="text-base font-bold text-green-600">Ticket Cost:{event.price}</span>
+                    </div>
 
-              
-<div className="flex gap-4" >
-              <button className="mt-4  w-2/4 bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition">
-                View Event
-              </button>  
-              <button className="mt-4 w-2/4 bg-amber-700 text-white py-2 rounded-lg hover:bg-blue-700 transition"> 
-                Book Now
-              </button>  
-</div>
+                    
+                    <div >
+                      <p className="text-sm text-gray-700 line-clamp-2">Address: {event.address}</p> 
+                    </div> 
+                    <div> <button className="mt-2 md:text-xl p-2 bg-red-800 text-white w-full rounded-xl" > Book Event </button> </div>
+                  </div>
+                </div>
+              ))}
             </div>
-          </div>
-        ))}
+          ) : (
+            <div className="bg-white rounded-lg shadow-lg p-12 text-center">
+              <p className="text-lg text-gray-600 font-medium">No events found</p>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );
