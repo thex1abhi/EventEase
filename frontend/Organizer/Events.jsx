@@ -11,7 +11,7 @@ const Events = () => {
     const fetchEvents = async () => {
       try {
         const { data } = await axios.get(
-          `${backendurl}/organizer/events`
+          `${backendurl}/organizer/my-events` 
         );
 
         // adjust this based on your API response

@@ -3,6 +3,7 @@ import { organizerlogin, organizersignup } from "../Controllers/Organizer.contro
 import EventController, { upload } from "../Controllers/EventController.js";
 import Allevents from "../Controllers/AllEvents.js";
 import verifyOrganizer from "../middlewares/VerifyOrgn.js";
+import getMyEvents from "../Controllers/OrgEvents.js";
 
 
 const organizerroutes=express.Router();
@@ -11,6 +12,7 @@ organizerroutes.post('/organizer-signup',organizersignup)
 organizerroutes.post('/organizer-login',organizerlogin);
 organizerroutes.post('/create-event' ,verifyOrganizer,upload.single("image"), EventController) 
 organizerroutes.get('/events', Allevents) 
+organizerroutes.get('/my-events', verifyOrganizer,  getMyEvents) 
  
 
 export default organizerroutes; 
