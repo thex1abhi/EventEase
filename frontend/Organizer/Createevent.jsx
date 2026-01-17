@@ -17,7 +17,8 @@ const Createevent = () => {
     date: "",
     price:null,
     type: "",
-    image: null,
+    image: null, 
+    organizer: req.organizerId
   });
 
   const handleChange = (e) => {
@@ -39,7 +40,9 @@ const Createevent = () => {
 
     try {
       const response = await axios.post(`${backendurl}/organizer/create-event`, data, {
-        headers: { "content-type": "multipart/form-data" }
+        headers: { "content-type": "multipart/form-data", 
+             Authorization: `Bearer ${localStorage.getItem("org_token")}`
+         }
       })
       if (response.data?.success === true) {
         toast.success("Event created ")
