@@ -27,14 +27,15 @@ export const upload = multer({ storage });
 
 const EventController = async (req, res) => {
     try {
-        const { name, city, address, date, price, type } = req.body;
+        const { name, city, address, date, price, type } = req.body; 
+       const  organizerId = req.organizerId ;
         const imageUrl = req.file?.path || "";
         
         if (!name || !city || !address || !date || !price || !type || !imageUrl) {
             return res.json({ success: false, error: "All fields are required including image" })
         }
 
-        const event = new Event({ name, city, address, date, price, type, image: imageUrl });
+        const event = new Event({ name, city, address, date, price, type, image: imageUrl , organizerId });
         await event.save();
         return res.json({ success: true, message: "Event Created Successfully", event })
 

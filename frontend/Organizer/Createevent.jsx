@@ -18,7 +18,6 @@ const Createevent = () => {
     price:null,
     type: "",
     image: null, 
-    organizer: req.organizerId
   });
 
   const handleChange = (e) => {

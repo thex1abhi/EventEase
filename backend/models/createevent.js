@@ -30,6 +30,11 @@ const EventSchema = new mongoose.Schema(
             type: String,
             required: true
         },
+        organizerId: {
+            type: mongoose.Schema.Types.ObjectId,
+            required: true,
+            ref: "Organizer"
+        }
 
     }
 );
