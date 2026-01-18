@@ -26,11 +26,11 @@ const Events = () => {
   }, [backendurl]);
 
   return (
-    <div className="min-h-screen bg-black py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto">
        
         <div className="mb-10 flex justify-center align-center">
-          <h2 className="text-3xl font-bold  text-white mb-2">Latest Events</h2>
+          <h2 className="text-3xl font-bold   mb-2">My Events</h2>
           
         </div>
 

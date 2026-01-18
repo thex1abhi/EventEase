@@ -59,15 +59,15 @@ const Createevent = () => {
 
 
   return (
-    <div className="min-h-screen bg-linear-to-br from-blue-50 to-indigo-100 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-lg mx-auto bg-white rounded-lg shadow-lg p-8">
-        <h2 className="text-3xl font-bold text-gray-900 mb-5 text-center">Create Event</h2>
+    <div className="min-h-screen bg-linear-to-br from-blue-50 to-indigo-100 py-2 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-lg mx-auto bg-white rounded-lg shadow-lg p-6">
+        <h2 className="text-3xl font-bold text-gray-900 mb-3 text-center">Create Event</h2>
         
         <form onSubmit={handleSubmit} className="space-y-3">
           
           
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">Event Name</label>
+            <label className="block text-sm font-medium text-gray-700 mb-1">Event Name</label>
             <input 
               type="text" 
               name="name" 
@@ -80,7 +80,7 @@ const Createevent = () => {
 
      
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">City</label>
+            <label className="block text-sm font-medium text-gray-700 mb-1">City</label>
             <input 
               type="text" 
               name="city" 
@@ -93,7 +93,7 @@ const Createevent = () => {
 
           
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">Address</label>
+            <label className="block text-sm font-medium text-gray-700 mb-1">Address</label>
             <input 
               type="text" 
               name="address" 
@@ -105,7 +105,7 @@ const Createevent = () => {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">Event Date</label>
+            <label className="block text-sm font-medium text-gray-700 mb-1">Event Date</label>
             <input 
               type="date" 
               name="date" 
@@ -117,7 +117,7 @@ const Createevent = () => {
 
          
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">Ticket Price</label>
+            <label className="block text-sm font-medium text-gray-700 mb-1">Ticket Price</label>
             <input 
               type="number" 
               name="price" 
@@ -130,7 +130,7 @@ const Createevent = () => {
 
         
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">Event Type</label>
+            <label className="block text-sm font-medium text-gray-700 mb-1">Event Type</label>
             <input 
               type="text" 
               name="type" 
@@ -143,7 +143,7 @@ const Createevent = () => {
 
        
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">Event Image</label>
+            <label className="block text-sm font-medium text-gray-700 mb-1">Event Image</label>
             <div className="relative">
               <input 
                 type="file" 
@@ -156,7 +156,7 @@ const Createevent = () => {
           </div>
 
        
-          <div className="flex gap-4 pt-6">
+          <div className="flex gap-4 pt-2">
             <button 
               type="submit"
               className="flex-1 bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-4 rounded-lg transition duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
