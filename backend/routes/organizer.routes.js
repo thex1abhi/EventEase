@@ -12,7 +12,7 @@ organizerroutes.post('/organizer-signup',organizersignup)
 organizerroutes.post('/organizer-login',organizerlogin);
 organizerroutes.post('/create-event' ,verifyOrganizer,upload.single("image"), EventController) 
 organizerroutes.get('/events', Allevents) 
-organizerroutes.get('/my-events', verifyOrganizer,  getMyEvents) 
+organizerroutes.get('/my-event',   getMyEvents) 
  
 
 export default organizerroutes; 

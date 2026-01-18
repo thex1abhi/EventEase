@@ -45,7 +45,7 @@ const Createevent = () => {
       })
       if (response.data?.success === true) {
         toast.success("Event created ")
-        navigate("/events")
+        navigate("/organizer-dashboard")
 
       }
 

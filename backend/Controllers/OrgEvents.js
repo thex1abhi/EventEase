@@ -1,5 +1,5 @@
 // This file returns the events created by org   
- 
+
 const getMyEvents = async (req, res) => {
   try {
     const events = await Event.find({
