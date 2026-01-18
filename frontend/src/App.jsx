@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useNavigate, Navigate } from "react-router-dom";
 import Home from "./pages/Home";
 import Userlogin from "../User/Userlogin";
 import Usersignup from "../User/Usersignup";
@@ -9,14 +9,14 @@ import { ToastContainer, toast } from 'react-toastify';
 import Orgdashboard from "../Organizer/Orgdashboard";
 import Createevent from "../Organizer/Createevent";
 import Allevent from "../Organizer/Events";
-import Events from "../Organizer/Events";
 
 const App = () => { 
    
- 
-  
 
-   
+  const user=localStorage.getItem("user_token")
+  const Organizer=localStorage.getItem("org_token")
+ 
+    
   return (
     <BrowserRouter>
       <ToastContainer position="top-right"
@@ -32,10 +32,10 @@ const App = () => {
 
         {/* org routes */}
 
-        <Route path="/organizer-signup" element={< Orgsignup />} />
+        <Route path="/organizer-signup" element={ < Orgsignup />} />
         <Route path="/organizer-login" element={<  Orglogin />} />
-        <Route path="/organizer-dashboard" element={<Orgdashboard />} />
-        <Route path="/create-event" element={<Createevent />} />
+        <Route path="/organizer-dashboard" element={ Organizer ? <Orgdashboard /> : <Navigate to="/organizer-login" ></Navigate> } />
+        <Route path="/create-event" element={ Organizer ?   <Createevent /> : <Navigate to="/organizer-login"></Navigate> } />
 
       </Routes>
     </BrowserRouter>
