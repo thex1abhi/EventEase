@@ -10,9 +10,7 @@ const Events = () => {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const { data } = await axios.get(
-          `${backendurl}/organizer/events`
-        );
+        const { data } = await axios.get(`${backendurl}/user/homeevent`  );
 
         // adjust this based on your API response
         setEvents(data.events || data);

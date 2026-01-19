@@ -1,6 +1,6 @@
  import Events from "../models/createevent.js"
 
- const Allevents=async(req,res)=>{
+ const Homeevents=async(req,res)=>{
       
     try {
          const events=await  Events.find().sort({date:-1}).limit(3); 
@@ -10,4 +10,4 @@
     }
  } 
 
- export default Allevents 
+ export default Homeevents  
