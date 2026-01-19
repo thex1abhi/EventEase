@@ -9,12 +9,15 @@ const OrgEvents = () => {
 
     useEffect(() => {
         const fetchEvents = async () => {
-            try {
-                const { data } = await axios.get(`${backendurl}/organizer/my-event`, {
+            try { 
+              
+                const { data } = await axios.get(`${backendurl}/organizer/my-event`,  
+                    {
                     headers: {
                         Authorization: `Bearer ${localStorage.getItem("org_token")}`
                     }
-                });
+                } 
+            );
  
                 setEvents(data.events || data);
 

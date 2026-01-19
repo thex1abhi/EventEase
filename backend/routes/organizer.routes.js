@@ -11,7 +11,6 @@ const organizerroutes=express.Router();
 organizerroutes.post('/organizer-signup',organizersignup)
 organizerroutes.post('/organizer-login',organizerlogin);
 organizerroutes.post('/create-event' ,verifyOrganizer,upload.single("image"), EventController) 
-
 organizerroutes.get('/my-event',verifyOrganizer, getMyEvents) 
  
 
