@@ -9,7 +9,7 @@ const verifyOrganizer = (req, res, next) => {
 
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    req.organizerId = decoded.id;   // ⭐ store organizer ID
+    req.organizerId = decoded.id;   
     next();
   } catch (err) {
     return res.status(401).json({ message: "Invalid token" });

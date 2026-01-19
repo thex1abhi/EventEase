@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import Events from "../src/Components/Events";
 import { CiSquarePlus } from "react-icons/ci";
+import OrgEvents from "./OrgEvents";
 const Orgdashboard = () => { 
     
   const navigate=useNavigate();
@@ -17,10 +17,10 @@ const Orgdashboard = () => {
            Create a New Event  
            <CiSquarePlus size={30} />
          </button>  
-         
+       
       </div> 
-      < Events />
+       <OrgEvents />
     </div> </> 
 };
 
-export default Orgdashboard;
+export default Orgdashboard; 
