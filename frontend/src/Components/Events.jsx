@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useAppContext } from "../Context/AppContext";
+import { useAppContext } from "../../Context/AppContext";
 import axios from "axios";
 
 const Events = () => {
@@ -10,7 +10,7 @@ const Events = () => {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const { data } = await axios.get(`${backendurl}organizer/my-event`);
+        const { data } = await axios.get(`${backendurl}/user/events`);
         // adjust this based on your API response
         setEvents(data.events || data);
 
@@ -27,7 +27,7 @@ const Events = () => {
       <div className="max-w-6xl mx-auto">
        
         <div className="mb-10 flex justify-center align-center">
-          <h2 className="text-3xl font-bold   mb-2">My Events</h2>
+          <h2 className="text-3xl font-bold   mb-2">Upcoming Events</h2>
           
         </div>
 

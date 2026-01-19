@@ -10,4 +10,4 @@
     }
  } 
 
- export default Allevents
+ export default Allevents 

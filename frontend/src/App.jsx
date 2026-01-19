@@ -8,7 +8,7 @@ import Orglogin from "../Organizer/Orglogin"
 import { ToastContainer, toast } from 'react-toastify';
 import Orgdashboard from "../Organizer/Orgdashboard";
 import Createevent from "../Organizer/Createevent";
-import Allevent from "../Organizer/Events";
+import Allevent from "./Components/Events";
 
 const App = () => { 
    
