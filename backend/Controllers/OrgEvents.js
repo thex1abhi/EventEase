@@ -1,9 +1,10 @@
 // This file returns the events created by org   
+import Event from "../models/createevent.js" 
 
 const getMyEvents = async (req, res) => {
   try {
     const events = await Event.find({
-      organizer: req.organizerId
+      organizerId: req.organizerId
     });
 
     res.status(200).json({ success: true, events });
@@ -12,4 +13,4 @@ const getMyEvents = async (req, res) => {
   }
 }; 
  
-export default getMyEvents;
+export default getMyEvents; 
