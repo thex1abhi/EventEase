@@ -1,24 +1,26 @@
 import React, { useEffect, useState } from "react";
 import { useAppContext } from "../Context/AppContext"
 import axios from "axios";
-
+import {  useNavigate } from "react-router-dom";
 const OrgEvents = () => {
 
     const [events, setEvents] = useState([]);
     const { backendurl } = useAppContext();
+   
+   const navigate=useNavigate();
 
     useEffect(() => {
         const fetchEvents = async () => {
-            try { 
-              
-                const { data } = await axios.get(`${backendurl}/organizer/my-event`,  
+            try {
+
+                const { data } = await axios.get(`${backendurl}/organizer/my-event`,
                     {
-                    headers: {
-                        Authorization: `Bearer ${localStorage.getItem("org_token")}`
+                        headers: {
+                            Authorization: `Bearer ${localStorage.getItem("org_token")}`
+                        }
                     }
-                } 
-            );
- 
+                );
+
                 setEvents(data.events || data);
 
             } catch (error) {
@@ -28,12 +30,16 @@ const OrgEvents = () => {
 
         fetchEvents();
     }, [backendurl]);
+  
+const handleDelete =async (req,res)=>{
+    confirm("Event deleted")
+}
 
     return (
-        <div className="min-h-screen py-12 px-4 sm:px-6 lg:px-8">
+        <div className="min-h-screen py-5 px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
 
-                <div className="mb-10 flex justify-center align-center">
+                <div className=" flex justify-center align-center">
                     <h2 className="text-3xl font-bold   mb-2">My Events</h2>
 
                 </div>
@@ -73,9 +79,11 @@ const OrgEvents = () => {
 
                                         <div >
                                             <p className="text-sm text-gray-700 line-clamp-2">Address: {event.address}</p>
-                                        </div>
-                                        <div> <button className="mt-2 md:text-xl p-2 bg-red-800 text-white w-full rounded-xl" > Book Event </button> </div>
-                                    </div>
+                     </div>
+                  <div  className=" flex gap-2"> <button onClick={()=>{navigate(`/update-event/${event._id}`)}} className="mt-2 md:text-xl p-2 bg-orange-800 text-white w-1/2 rounded-xl" > Update Event </button>   
+                  <button  onClick={handleDelete}  className="mt-2 md:text-xl p-2 bg-red-800 text-white w-1/2 rounded-xl" > Delete Event </button> 
+                  </div>
+                       </div>
                                 </div>
                             ))}
                         </div>
