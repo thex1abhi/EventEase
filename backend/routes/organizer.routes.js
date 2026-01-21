@@ -5,14 +5,16 @@ import EventController, { upload } from "../Controllers/EventController.js";
 import verifyOrganizer from "../middlewares/VerifyOrgn.js";
 import getMyEvents from "../Controllers/OrgEvents.js";
 import { deleteEvent } from "../Controllers/Deleteevent.js";
+import organizer from "../models/Organizer.model.js";
 
 
-const organizerroutes=express.Router();
- 
-organizerroutes.post('/organizer-signup',organizersignup)
-organizerroutes.post('/organizer-login',organizerlogin);
-organizerroutes.post('/create-event' ,verifyOrganizer,upload.single("image"), EventController) 
-organizerroutes.get('/my-event',verifyOrganizer, getMyEvents) 
+const organizerroutes = express.Router();
+
+organizerroutes.post('/organizer-signup', organizersignup)
+organizerroutes.post('/organizer-login', organizerlogin);
+organizerroutes.post('/create-event', verifyOrganizer, upload.single("image"), EventController)
+organizerroutes.get('/my-event', verifyOrganizer, getMyEvents)
 organizerroutes.delete("/delete-event/:id", deleteEvent);
+organizerroutes.put("/update-event/:id", updateEvent);
 
 export default organizerroutes; 
