@@ -10,13 +10,13 @@ import Orgdashboard from "../Organizer/Orgdashboard";
 import Createevent from "../Organizer/Createevent";
 import Allevent from "./Components/Events";
 
-const App = () => { 
-   
+const App = () => {
 
-  const user=localStorage.getItem("user_token")
-  const Organizer=localStorage.getItem("org_token")
- 
-    
+
+  const user = localStorage.getItem("user_token")
+  const Organizer = localStorage.getItem("org_token")
+
+
   return (
     <BrowserRouter>
       <ToastContainer position="top-right"
@@ -28,14 +28,14 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/user-signup" element={<Usersignup />} />
         <Route path="/user-login" element={<Userlogin />} />
-        <Route path="/all-events" element={  <  Allevent   />} />
+        <Route path="/all-events" element={<  Allevent />} />
 
         {/* org routes */}
 
-        <Route path="/organizer-signup" element={ < Orgsignup />} />
+        <Route path="/organizer-signup" element={< Orgsignup />} />
         <Route path="/organizer-login" element={<  Orglogin />} />
-        <Route path="/organizer-dashboard" element={ Organizer ? <Orgdashboard /> : <Navigate to="/organizer-login" ></Navigate> } />
-        <Route path="/create-event" element={ Organizer ?   <Createevent /> : <Navigate to="/organizer-login"></Navigate> } />
+        <Route path="/organizer-dashboard" element={Organizer ? <Orgdashboard /> : <Navigate to="/organizer-login" ></Navigate>} />
+        <Route path="/create-event" element={Organizer ? <Createevent /> : <Navigate to="/organizer-login"></Navigate>} />
 
       </Routes>
     </BrowserRouter>
