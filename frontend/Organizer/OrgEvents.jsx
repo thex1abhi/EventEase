@@ -31,9 +31,17 @@ const OrgEvents = () => {
         fetchEvents();
     }, [backendurl]);
   
-const handleDelete =async (req,res)=>{
-    confirm("Event deleted")
-}
+const handleDelete = async (id) => {
+  try { 
+    await axios.delete(`${backendurl}/delete-event/${id}`);
+    toast.success("Event Deleted");
+    setEvents(events.filter(event => event._id !== id));
+
+  } catch (error) {
+    toast.error("Delete failed");
+  }
+};
+
 
     return (
         <div className="min-h-screen py-5 px-4 sm:px-6 lg:px-8">
@@ -81,7 +89,7 @@ const handleDelete =async (req,res)=>{
                                             <p className="text-sm text-gray-700 line-clamp-2">Address: {event.address}</p>
                      </div>
                   <div  className=" flex gap-2"> <button onClick={()=>{navigate(`/update-event/${event._id}`)}} className="mt-2 md:text-xl p-2 bg-orange-800 text-white w-1/2 rounded-xl" > Update Event </button>   
-                  <button  onClick={handleDelete}  className="mt-2 md:text-xl p-2 bg-red-800 text-white w-1/2 rounded-xl" > Delete Event </button> 
+                  <button  onClick={ ()=> handleDelete(event._id) }  className="mt-2 md:text-xl p-2 bg-red-800 text-white w-1/2 rounded-xl" > Delete Event </button> 
                   </div>
                        </div>
                                 </div>
