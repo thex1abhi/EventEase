@@ -8,4 +8,5 @@ export const updateEvent = async (req, res) => {
     );
 
     res.json({ success: true, event: updatedEvent });
-};
+}; 
+export default updateEvent
