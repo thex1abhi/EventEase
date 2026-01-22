@@ -9,6 +9,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import Orgdashboard from "../Organizer/Orgdashboard";
 import Createevent from "../Organizer/Createevent";
 import Allevent from "./Components/Events";
+import Bookevent from "./Components/Bookevent";
 
 const App = () => {
 
@@ -29,6 +30,7 @@ const App = () => {
         <Route path="/user-signup" element={<Usersignup />} />
         <Route path="/user-login" element={<Userlogin />} />
         <Route path="/all-events" element={<  Allevent />} />
+      <Route path="/book-event/:id" element={ user ? <  Bookevent /> : <Navigate  to="/user-login" ></Navigate>} />
 
         {/* org routes */}
 

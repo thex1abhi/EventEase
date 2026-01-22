@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useAppContext } from "../../Context/AppContext"
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Events = () => {
 
   const [events, setEvents] = useState([]);
   const { backendurl } = useAppContext();
-
+  const navigate=useNavigate();
   useEffect(() => {
     const fetchEvents = async () => {
       try {
@@ -68,7 +69,7 @@ const Events = () => {
                     <div >
                       <p className="text-sm text-gray-700 line-clamp-2">Address: {event.address}</p> 
                     </div> 
-                    <div> <button className="mt-2 md:text-xl p-2 bg-red-800 text-white w-full rounded-xl" > Book Event </button> </div>
+                    <div> <button onClick={()=>{navigate(`/book-event/${event._id}`)}} className="mt-2 md:text-xl p-2 bg-red-800 text-white w-full rounded-xl" > Book Event </button> </div>
                   </div>
                 </div>
               ))}
