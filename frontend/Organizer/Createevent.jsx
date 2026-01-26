@@ -32,42 +32,53 @@ const Createevent = () => {
   }
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    const data = new FormData();
-    Object.keys(formData).forEach((key)=>data.append(key, formData[key]))
+  e.preventDefault();
 
+  const data = new FormData();
 
-    try {
-      const response = await axios.post(`${backendurl}/organizer/create-event`, data, {
-        headers: { "content-type": "multipart/form-data", 
-             Authorization: `Bearer ${localStorage.getItem("org_token")}`
-         }
-      })
-      if (response.data?.success === true) {
-        toast.success("Event created ")
-        navigate("/organizer-dashboard")
+  data.append("name", formData.name);
+  data.append("city", formData.city);
+  data.append("address", formData.address);
+  data.append("date", formData.date);
+  data.append("price", formData.price);
+  data.append("type", formData.type);
 
-      }
-
-    } catch (error) {
-      console.log(error)
-      toast.error("Error Creating Event")
-    }
-
+  if (formData.image) {
+    data.append("image", formData.image); 
   }
+
+  try {
+    const response = await axios.post(  `${backendurl}/organizer/create-event`,data,
+      {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("org_token")}`,
+        },
+      }
+    );
+
+    if (response.data?.success) {
+      toast.success("Event created successfully ");
+      navigate("/organizer-dashboard");
+    }
+  } catch (error) {
+    console.error(error);
+    toast.error("Error creating event");
+  }
+};
+
 
 
 
   return (
     <div className="min-h-screen bg-linear-to-br from-blue-50 to-indigo-100 py-2 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-lg mx-auto bg-white rounded-lg shadow-lg p-6">
-        <h2 className="text-3xl font-bold text-gray-900 mb-3 text-center">Create Event</h2>
+      <div className="max-w-lg mx-auto bg-slate-800 text-white rounded-lg shadow-lg p-6">
+        <h2 className="text-3xl font-bold  mb-3 text-center">Create Event</h2>
         
         <form onSubmit={handleSubmit} className="space-y-3">
           
           
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Event Name</label>
+            <label className="block text-sm font-medium  mb-1">Event Name</label>
             <input 
               type="text" 
               name="name" 
@@ -80,7 +91,7 @@ const Createevent = () => {
 
      
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">City</label>
+            <label className="block text-sm font-medium  mb-1">City</label>
             <input 
               type="text" 
               name="city" 
@@ -93,7 +104,7 @@ const Createevent = () => {
 
           
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Address</label>
+            <label className="block text-sm font-medium  mb-1">Address</label>
             <input 
               type="text" 
               name="address" 
@@ -105,7 +116,7 @@ const Createevent = () => {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Event Date</label>
+            <label className="block text-sm font-medium  mb-1">Event Date</label>
             <input 
               type="date" 
               name="date" 
@@ -117,7 +128,7 @@ const Createevent = () => {
 
          
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Ticket Price</label>
+            <label className="block text-sm font-medium  mb-1">Ticket Price</label>
             <input 
               type="number" 
               name="price" 
@@ -130,7 +141,7 @@ const Createevent = () => {
 
         
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Event Type</label>
+            <label className="block text-sm font-medium  mb-1">Event Type</label>
             <input 
               type="text" 
               name="type" 
@@ -143,7 +154,7 @@ const Createevent = () => {
 
        
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Event Image</label>
+            <label className="block text-sm font-medium mb-1">Event Image</label>
             <div className="relative">
               <input 
                 type="file" 
@@ -165,7 +176,7 @@ const Createevent = () => {
             </button>
             <button 
               type="reset"
-              className="flex-1 bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-3 px-4 rounded-lg transition duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2"
+              className="flex-1  bg-gray-200 text-black  font-bold py-3 px-4 rounded-lg transition duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2"
             > 
               Reset
             </button>

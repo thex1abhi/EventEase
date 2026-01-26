@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useAppContext } from "../../Context/AppContext";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
- 
+import Navbar from "./Navbar";
+  
 const Events = () => {
 
   const [events, setEvents] = useState([]);
@@ -24,7 +25,9 @@ const Events = () => {
     fetchEvents();
   }, [backendurl]);
 
-  return (
+  return (  
+    <>
+   <Navbar/>
     <div className="min-h-screen py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto">
        
@@ -47,7 +50,7 @@ const Events = () => {
                     <img
                       src={event.image}
                       alt={event.name}
-                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-300   "
+                      className="w-full h-full object-fill hover:scale-105 transition-transform duration-300   "
                     />
                   </div>
 
@@ -69,7 +72,7 @@ const Events = () => {
                     <div >
                       <p className="text-sm text-gray-700 line-clamp-2">Address: {event.address}</p> 
                     </div> 
-                    <div> <button onClick={()=>navigate(`/book-event/${event._id}`)} className="mt-2 md:text-xl p-2 bg-red-800 text-white w-full rounded-xl" > Book Event </button> </div>
+                    <div> <button onClick={()=>navigate(`/book-event/${event._id}`)} className="mt-2  cursor-pointer md:text-xl p-2 hover:scale-y-105 bg-red-800 text-white w-full rounded-xl" > Book Event </button> </div>
                   </div>
                 </div>
               ))}
@@ -81,7 +84,8 @@ const Events = () => {
           )}
         </div>
       </div>
-    </div>
+    </div> 
+     </>
   );
 };
 

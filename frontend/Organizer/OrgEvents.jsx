@@ -2,11 +2,13 @@ import React, { useEffect, useState } from "react";
 import { useAppContext } from "../Context/AppContext"
 import axios from "axios";
 import {  useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 const OrgEvents = () => {
 
     const [events, setEvents] = useState([]);
     const { backendurl } = useAppContext();
-   
+   const [showModal, setShowModal] = useState(false);
+const [deleteId, setDeleteId] = useState(null);
    const navigate=useNavigate();
 
     useEffect(() => {
@@ -31,16 +33,21 @@ const OrgEvents = () => {
         fetchEvents();
     }, [backendurl]);
   
-const handleDelete = async (id) => {
-  try { 
-    await axios.delete(`${backendurl}/delete-event/${id}`);
-    toast.success("Event Deleted");
-    setEvents(events.filter(event => event._id !== id));
+const handleConfirmDelete = async () => {
+  try {
+    await axios.delete(
+      `${backendurl}/organizer/delete-event/${deleteId}`);
 
+    setEvents(prev => prev.filter(ev => ev._id !== deleteId));
+    toast.success("Event deleted");
   } catch (error) {
     toast.error("Delete failed");
+  } finally {
+    setShowModal(false);
+    setDeleteId(null);
   }
 };
+
 
 
     return (
@@ -48,7 +55,7 @@ const handleDelete = async (id) => {
             <div className="max-w-6xl mx-auto">
 
                 <div className=" flex justify-center align-center">
-                    <h2 className="text-3xl font-bold   mb-2">My Events</h2>
+                    <h2 className="text-3xl font-bold   mb-10">My Events</h2>
 
                 </div>
 
@@ -88,9 +95,18 @@ const handleDelete = async (id) => {
                                         <div >
                                             <p className="text-sm text-gray-700 line-clamp-2">Address: {event.address}</p>
                      </div>
-                  <div  className=" flex gap-2"> <button onClick={()=>{navigate(`/update-event/${event._id}`)}} className="mt-2 md:text-xl p-2 bg-orange-800 text-white w-1/2 rounded-xl" > Update Event </button>   
-                  <button  onClick={ ()=> handleDelete(event._id) }  className="mt-2 md:text-xl p-2 bg-red-800 text-white w-1/2 rounded-xl" > Delete Event </button> 
-                  </div>
+                  <div  className=" flex gap-2"> <button onClick={()=>{navigate(`/update-event/${event._id}`)}} className="mt-2 md:text-xl cursor-pointer p-2 bg-orange-800 text-white w-1/2 rounded-xl" > Update  </button>   
+               
+               
+               
+                   <button onClick={() => {
+              setDeleteId(event._id);
+              setShowModal(true);
+            }}     
+           className="mt-2 md:text-xl p-2 bg-red-800 text-white w-1/2  cursor-pointer rounded-xl" > Delete </button>  
+           
+                  </div> 
+                  
                        </div>
                                 </div>
                             ))}
@@ -101,8 +117,35 @@ const handleDelete = async (id) => {
                         </div>
                     )}
                 </div>
-            </div>
-        </div>
+            </div> 
+            {showModal && (
+  <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+    <div className="bg-white p-6 rounded-lg w-100">
+      <h2 className="text-lg font-bold mb-3">Confirm Delete</h2>
+      <p className="text-gray-600 mb-4">
+        Are you sure you want to delete this event?
+      </p>
+
+      <div className="flex justify-center  gap-3">
+        <button
+          onClick={() => setShowModal(false)}
+          className="px-4 py-2 bg-gray-300 rounded"
+        >
+          Cancel
+        </button>
+
+        <button
+          onClick={handleConfirmDelete}
+          className="px-4 py-2 bg-red-600 text-white rounded"
+        >
+          Delete
+        </button>
+      </div>
+    </div>
+  </div>
+)}
+
+        </div>  
     );
 };
 

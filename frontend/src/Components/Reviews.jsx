@@ -44,7 +44,7 @@ const Reviews = () => {
     <section className="my-6 px-4 md:px-6 py-6">
       <div className="max-w-3xl mx-auto">
         {/* Header */}
-        <div className="bg-slate-800 text-gray-300 p-6 rounded-xl shadow mb-6">
+        <div className="bg-slate-900 text-gray-300 p-6 rounded-xl shadow mb-6">
           <div className="flex items-center justify-between">
             <div>
               <h2 className="text-2xl font-bold">Event Reviews</h2>
@@ -72,18 +72,18 @@ const Reviews = () => {
           {reviews.map((review) => (
             <article
               key={review.id}
-              className="bg-white border border-gray-100 rounded-xl shadow-sm p-4 md:p-5 grid md:grid-cols-6 gap-4 items-start"
+              className="bg-slate-700  text-white border border-gray-100 rounded-xl shadow-sm p-4 md:p-5 grid md:grid-cols-6 gap-4 items-start"
             >
               
 
               {/* Content */}
               <div className="md:col-span-4">
                 <div className="flex items-center justify-between">
-                  <h3 className="font-semibold text-gray-800">{review.name}</h3>
-                  <div className="text-sm text-gray-500">{review.rating}/5</div>
+                  <h3 className="font-semibold ">{review.name}</h3>
+                  <div className="text-sm ">{review.rating}/5</div>
                 </div>
 
-                <p className="text-gray-600 mt-2">{review.comment}</p>
+                <p className=" mt-2">{review.comment}</p>
               </div>
 
               {/* Stars */}

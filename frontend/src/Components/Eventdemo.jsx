@@ -43,11 +43,11 @@ const Events = () => {
                   className="bg-white rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300 overflow-hidden"
                 >
                  
-                  <div className="h-40 overflow-hidden bg-gray-200">
+                  <div className="h-40    bg-gray-200">
                     <img
                       src={event.image}
                       alt={event.name}
-                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-300   "
+                      className=" h-full  w-full object-fill  hover:scale-105 transition-transform duration-300   "
                     />
                   </div>
 
@@ -69,7 +69,7 @@ const Events = () => {
                     <div >
                       <p className="text-sm text-gray-700 line-clamp-2">Address: {event.address}</p> 
                     </div> 
-                    <div> <button onClick={()=>{navigate(`/book-event/${event._id}`)}} className="mt-2 md:text-xl p-2 bg-red-800 text-white w-full rounded-xl" > Book Event </button> </div>
+                    <div> <button onClick={()=>{navigate(`/book-event/${event._id}`)}} className="mt-2 md:text-xl cursor-pointer hover:scale-y-105 p-2 bg-red-800 text-white w-full rounded-xl" > Book Event </button> </div>
                   </div>
                 </div>
               ))}

@@ -31,14 +31,14 @@ const Navbar = () => {
 
 
 
-    <nav className="bg-white shadow">
+    <nav className="bg-slate-800 text-white shadow">
       <div className="container mx-auto px-3 py-3  flex items-center justify-between">
         <Link to="/" className="text-xl font-semibold">
           EventEase
         </Link>
 
         <div className="flex items-center space-x-4">
-          <Link to="/" className="text-slate-700 hover:text-black">
+          <Link to="/" className="text-white ">
             Home
           </Link>
          
@@ -48,10 +48,10 @@ const Navbar = () => {
      
  ) :(  
    <div> 
-      <Link to="/user-signup" className="text-slate-700 mx-3 hover:text-black" >
+      <Link to="/user-signup" className="text-white mx-3 " >
             Signup
           </Link  >
-             <Link to="/user-login" className="text-slate-700 mx-3 hover:text-black"  >  
+             <Link to="/user-login" className="text-white mx-3"  >  
              Login</Link> 
              </div>  
  )

@@ -10,6 +10,7 @@ import Orgdashboard from "../Organizer/Orgdashboard";
 import Createevent from "../Organizer/Createevent";
 import Allevent from "./Components/Events";
 import Bookevent from "./Components/Bookevent";
+import Updateevent from "../Organizer/Updateevent";
 
 const App = () => {
 
@@ -38,7 +39,8 @@ const App = () => {
         <Route path="/organizer-login" element={<  Orglogin />} />
         <Route path="/organizer-dashboard" element={Organizer ? <Orgdashboard /> : <Navigate to="/organizer-login" ></Navigate>} />
         <Route path="/create-event" element={Organizer ? <Createevent /> : <Navigate to="/organizer-login"></Navigate>} />
-
+         <Route path="/update-event/:id" element={Organizer ? <Updateevent /> : <Navigate to="/organizer-login"></Navigate>} />
+        
       </Routes>
     </BrowserRouter>
   );
