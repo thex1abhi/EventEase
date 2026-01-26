@@ -14,7 +14,7 @@ organizerroutes.post('/organizer-login', organizerlogin);
 organizerroutes.post('/create-event', verifyOrganizer, upload.single("image"), EventController)
 organizerroutes.get('/my-event', verifyOrganizer, getMyEvents)
 organizerroutes.delete("/delete-event/:id", deleteEvent);
-organizerroutes.put("/update-event/:id", updateEvent);
-organizerroutes.get("/single-event/:id", getSingleEvent);
+organizerroutes.put("/update-event/:id",  upload.single("image"), updateEvent);
+organizerroutes.get("/single-event/:id",   getSingleEvent);
 
 export default organizerroutes; 

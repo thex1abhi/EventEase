@@ -22,7 +22,7 @@ const UpdateEvent = () => {
   const [oldImage, setOldImage] = useState("");
   const [preview, setPreview] = useState("");
 
-  // 🔹 Fetch old event data
+  //  Fetch old event data
   useEffect(() => {
     const fetchEvent = async () => {
       try {
@@ -57,7 +57,7 @@ const UpdateEvent = () => {
     fetchEvent();
   }, [ id]);
 
-  // 🔹 Handle input changes
+
   const handleChange = (e) => {
     if (e.target.name === "image") {
       const file = e.target.files[0];
@@ -74,7 +74,7 @@ const UpdateEvent = () => {
     }
   };
 
-  // 🔹 Update event
+  //  Update event
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -102,7 +102,7 @@ const UpdateEvent = () => {
       );
 
       if (response.data?.success) {
-        toast.success("Event updated successfully 🎉");
+        toast.success("Event updated ");
         navigate("/organizer-dashboard");
       }
     } catch (error) {

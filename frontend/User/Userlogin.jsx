@@ -71,7 +71,7 @@ const navigate = useNavigate();
           <button type="submit" className="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-slate-700 transition"> Login </button> 
 
           <Link to="/organizer-login" className="mt-4 w-full inline-flex items-center justify-center gap-2 px-4 py-2 bg-orange-600 text-white rounded-md hover:bg-slate-700 transition">
-            Login Organizer <FaArrowAltCircleRight />
+             Organizer Login <FaArrowAltCircleRight />
           </Link>
     </form>  
 

@@ -55,7 +55,7 @@ const handleConfirmDelete = async () => {
             <div className="max-w-6xl mx-auto">
 
                 <div className=" flex justify-center align-center">
-                    <h2 className="text-3xl font-bold   mb-10">My Events</h2>
+                    <h2 className="text-3xl font-bold   mb-5">My Events</h2>
 
                 </div>
 
@@ -95,14 +95,14 @@ const handleConfirmDelete = async () => {
                                         <div >
                                             <p className="text-sm text-gray-700 line-clamp-2">Address: {event.address}</p>
                      </div>
-                  <div  className=" flex gap-2"> <button onClick={()=>{navigate(`/update-event/${event._id}`)}} className="mt-2 md:text-xl cursor-pointer p-2 bg-orange-800 text-white w-1/2 rounded-xl" > Update  </button>   
+                  <div  className=" flex gap-2"> <button onClick={()=>{navigate(`/update-event/${event._id}`)}} className="mt-2 md:text-xl cursor-pointer p-2 bg-yellow-400 text-black w-1/2 rounded-xl" > Update  </button>   
                
                
                
                    <button onClick={() => {
               setDeleteId(event._id);
               setShowModal(true);
-            }}     
+            }}      
            className="mt-2 md:text-xl p-2 bg-red-800 text-white w-1/2  cursor-pointer rounded-xl" > Delete </button>  
            
                   </div> 
@@ -129,15 +129,15 @@ const handleConfirmDelete = async () => {
       <div className="flex justify-center  gap-3">
         <button
           onClick={() => setShowModal(false)}
-          className="px-4 py-2 bg-gray-300 rounded"
+          className="px-4 py-2 bg-gray-300 cursor-pointer rounded"
         >
           Cancel
         </button>
 
         <button
           onClick={handleConfirmDelete}
-          className="px-4 py-2 bg-red-600 text-white rounded"
-        >
+          className="px-4 py-2 bg-red-600 cursor-pointer text-white rounded" 
+        > 
           Delete
         </button>
       </div>

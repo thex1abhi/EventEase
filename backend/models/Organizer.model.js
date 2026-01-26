@@ -19,12 +19,8 @@ const organizerSchema= new  mongoose.Schema (
       type: String,
       required: true,
       
-    }, 
-    organizer: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Organizer",
-    required: true
-  }
+    }
+   
 
     }
 ) 

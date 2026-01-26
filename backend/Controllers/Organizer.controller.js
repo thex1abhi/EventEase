@@ -3,7 +3,8 @@ import jwt from "jsonwebtoken"
 import Organizer from "../models/Organizer.model.js";
 
 const organizersignup = async (req, res) => {
-    try {
+    try { 
+        console.log("REQ BODY:", req.body);
         const { name, email, password } = req.body;
          const existingOrganizer = await Organizer.findOne({ email });
         if (existingOrganizer) {
