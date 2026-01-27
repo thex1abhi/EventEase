@@ -112,102 +112,136 @@ const UpdateEvent = () => {
   };
 
   return (
-    <div className="min-h-screen bg-linear-to-br from-blue-50 to-indigo-100 py-4 px-4">
+    <div className="min-h-screen bg-linear-to-br from-blue-50 to-indigo-100 py-4 px-4 sm:px-6 lg:px-8">
       <div className="max-w-lg mx-auto bg-slate-800 text-white rounded-lg shadow-lg p-6">
-        <h2 className="text-3xl font-bold mb-4 text-center">Update Event</h2>
+        <h2 className="text-3xl font-bold mb-3 text-center">Update Event</h2>
 
         <form onSubmit={handleSubmit} className="space-y-3">
-          {/* Name */} Name:
-          <input
-            type="text"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-            placeholder="Event Name"
-            className="w-full px-4 py-2 rounded-lg text-black"
-            required
-          />
-
-          {/* City */} City:
-          <input
-            type="text"
-            name="city"
-            value={formData.city}
-            onChange={handleChange}
-            placeholder="City"
-            className="w-full px-4 py-2 rounded-lg text-black"
-            required
-          />
-
-          {/* Address */}Address:
-          <input
-            type="text"
-            name="address"
-            value={formData.address}
-            onChange={handleChange}
-            placeholder="Address"
-            className="w-full px-4 py-2 rounded-lg text-black"
-            required
-          />
-
-          {/* Date */}Date:
-          <input
-            type="date"
-            name="date"
-            value={formData.date}
-            onChange={handleChange}
-            className="w-full px-4 py-2 rounded-lg text-black"
-            required
-          />
-
-          {/* Price */}Price:
-          <input
-            type="number"
-            name="price"
-            value={formData.price}
-            onChange={handleChange}
-            placeholder="Ticket Price"
-            className="w-full px-4 py-2 rounded-lg text-black"
-            required
-          />
-
-          Type:
-          <input
-            type="text"
-            name="type"
-            value={formData.type}
-            onChange={handleChange}
-            placeholder="Event Type"
-            className="w-full px-4 py-2 rounded-lg text-black"
-            required
-          />
-
-          
-          <div> 
-            <label className="block text-sm mb-1"> Image:</label>
-
-            {(preview || oldImage) && (
-              <img
-                src={preview || oldImage}
-                alt="event"
-                className="w-full h-40 object-cover rounded mb-2"
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label className="block text-sm font-medium mb-1 text-white">Event Name</label>
+              <input
+                type="text"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                placeholder="Event Name"
+                className="w-full px-4 py-2 border border-gray-600 rounded-lg bg-transparent text-white placeholder-white focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                required
               />
-            )}
+            </div>
 
-            <input
-              type="file"
-              name="image"
-              onChange={handleChange}
-              className="w-full text-sm"
-            />
+            <div>
+              <label className="block text-sm font-medium mb-1 text-white">City</label>
+              <input
+                type="text"
+                name="city"
+                value={formData.city}
+                onChange={handleChange}
+                placeholder="City"
+                className="w-full px-4 py-2 border border-gray-600 rounded-lg bg-transparent text-white placeholder-white focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                required
+              />
+            </div>
+
+            <div className="md:col-span-2">
+              <label className="block text-sm font-medium mb-1 text-white">Address</label>
+              <input
+                type="text"
+                name="address"
+                value={formData.address}
+                onChange={handleChange}
+                placeholder="Address"
+                className="w-full px-4 py-2 border border-gray-600 rounded-lg bg-transparent text-white placeholder-white focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                required
+              />
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium mb-1 text-white">Event Date</label>
+              <input
+                type="date"
+                name="date"
+                value={formData.date}
+                onChange={handleChange}
+                className="w-full px-4 py-2 border border-gray-600 rounded-lg bg-transparent text-white placeholder-white focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                required
+              />
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium mb-1 text-white">Ticket Price</label>
+              <input
+                type="number"
+                name="price"
+                value={formData.price}
+                onChange={handleChange}
+                placeholder="Ticket Price"
+                className="w-full px-4 py-2 border border-gray-600 rounded-lg bg-transparent text-white placeholder-white focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                required
+              />
+            </div>
+
+            <div className="md:col-span-2">
+              <label className="block text-sm font-medium mb-1 text-white">Event Type</label>
+              <input
+                type="text"
+                name="type"
+                value={formData.type}
+                onChange={handleChange}
+                placeholder="Event Type"
+                className="w-full px-4 py-2 border border-gray-600 rounded-lg bg-transparent text-white placeholder-white focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                required
+              />
+            </div>
+
+            <div className="md:col-span-2">
+              <label className="block text-sm font-medium mb-1 text-white">Event Image</label>
+
+              {(preview || oldImage) && (
+                <img
+                  src={preview || oldImage}
+                  alt="event"
+                  className="w-full h-40 object-cover rounded mb-2"
+                />
+              )}
+
+              <input
+                type="file"
+                name="image"
+                onChange={handleChange}
+                className="w-full px-4 py-2 border border-gray-600 rounded-lg text-sm text-white bg-transparent"
+              />
+            </div>
           </div>
 
-          <button
-            type="submit"
-            className="w-full bg-indigo-600 hover:bg-indigo-700 py-3 rounded-lg font-bold"
-          >
-            Update Event
-          </button>
+          <div className="flex flex-col md:flex-row gap-4 pt-2">
+            <button
+              type="submit"
+              className="flex-1 bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-4 rounded-lg transition duration-200 transform hover:scale-105"
+            >
+              Update Event
+            </button>
+
+            <button
+              type="button"
+              onClick={() => {
+                setFormData({
+                  name: "",
+                  city: "",
+                  address: "",
+                  date: "",
+                  price: "",
+                  type: "",
+                  image: null,
+                });
+                setPreview("");
+              }}
+              className="flex-1 bg-gray-200 text-black font-bold py-3 px-4 rounded-lg transition duration-200 transform hover:scale-105"
+            >
+              Reset
+            </button>
+          </div>
         </form>
       </div>
     </div>
