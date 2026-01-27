@@ -1,8 +1,9 @@
-//this returns the single event for update for the organizer
+// this  return the single event for the booking page  for user
 
-import Event from "../models/createevent.js";
 
-export const getSingleEvent = async (req, res) => {
+import Event from "..//models/createevent.js";
+
+export const SingleEventBook = async (req, res) => {
   try {
     const event = await Event.findById(req.params.id);
 
