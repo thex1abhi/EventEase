@@ -30,10 +30,10 @@ const navigate = useNavigate();
              navigate("/")
          }
     } catch (error) { 
-        toast.error("Signup Failed")
+        toast.error("Login Failed")
     
         console.error(error?.response?.data?.message || error.message)
-        seterror(error?.response?.data?.message || "Signup failed")
+        seterror(error?.response?.data?.message || "Login failed")
     }
  }
 

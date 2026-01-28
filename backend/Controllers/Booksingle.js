@@ -5,7 +5,7 @@ import Event from "..//models/createevent.js";
 
 export const SingleEventBook = async (req, res) => {
   try {
-    const event = await Event.findById(req.params.id);
+    const event = await Event.findById(req.params.eventId);
 
     if (!event) {
       return res.status(404).json({

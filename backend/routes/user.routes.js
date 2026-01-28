@@ -7,10 +7,11 @@ import { SingleEventBook } from "../Controllers/Booksingle.js";
 
 const userroutes = express.Router();
 
-userroutes.post('/user-signup',usersignup)
+userroutes.post('/user-signup', usersignup)
 userroutes.post('/user-login', userlogin);
-userroutes.get('/events', Allevents) 
-userroutes.get("/homeevent",Homeevents)  
-userroutes.post("/:eventId",bookevent)  
-userroutes.get('/single-event/:id', SingleEventBook)
+userroutes.get('/events', Allevents)
+userroutes.get("/homeevent", Homeevents)
+userroutes.post("/book/:eventId", bookevent)
+userroutes.get('/single-event/:eventId', SingleEventBook)
+
 export default userroutes; 

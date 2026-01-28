@@ -12,7 +12,7 @@ const Footer = () => {
         <div className="flex items-center space-x-6">
           <nav className="flex space-x-4">
             <a href="/" className="text-sm hover:text-white">Home</a>
-            <a href="/about" className="text-sm hover:text-white">About</a>
+            <a href="#" className="text-sm hover:text-white">About</a>
           
           </nav>
 

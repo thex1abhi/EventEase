@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 const BookingSchema = new mongoose.Schema(
     {
 
-        eventID: {
+        eventId: {
             type: mongoose.Schema.Types.ObjectId,
             required: true,
             ref: "Event"
@@ -21,9 +21,16 @@ const BookingSchema = new mongoose.Schema(
         age: {
             type: Number
         },
-        phone: String,
+        phone: {
+            type: String,
+            required: true
+        },
         seatNumber: Number,
-    }
+    },
+    { timestamps: true }
 );
+
+// Unique compound index to prevent duplicate bookings using phone number
+BookingSchema.index({ phone: 1, eventId: 1 }, { unique: true });
 
 export default mongoose.model("Bookings", BookingSchema)
