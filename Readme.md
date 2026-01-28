@@ -76,20 +76,23 @@ Create a `.env` file in the **backend** directory:
   ```
 
 ## 📸 Screenshots
-
-
-```md 
-
-![Home Page](screenshots/homepage.jpg) 
-![Signup Page](screenshots/signup.jpg) 
-![Login Page](screenshots/login.jpg) 
-![Event Details](screenshots/allevents.jpg)
-![Booking Page](screenshots/eventbooking.jpg)
+Home page :
+![Home Page](screenshots/homepage.jpg)  
+Signup page:
+![Signup Page](screenshots/signup.jpg)  
+Login page:
+![Login Page](screenshots/login.jpg)  
+All events :
+![Event Details](screenshots/allevents.jpg) 
+Event booking :
+![Booking Page](screenshots/eventbooking.jpg) 
+Organizer dashboard: 
 ![Organizer Dashboard](screenshots/organizerdashboard.jpg) 
-![Organizer Create Event](screenshots/createnewevent.jpg) 
-![Organizer Update Event](screenshots/updateevent.jpg) 
+Create Event page:
+![Organizer Create Event](screenshots/createnewevent.jpg)  
+Update event page:
+![Organizer Update Event](screenshots/updateevent.jpg)
 
-```
 
 ---
 
