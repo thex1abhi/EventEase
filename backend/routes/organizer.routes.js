@@ -1,7 +1,7 @@
 import express from "express"
 import { organizerlogin, organizersignup } from "../Controllers/Organizer.controller.js";
 import EventController, { upload } from "../Controllers/EventController.js";
-import verifyOrganizer from "../middlewares/VerifyOrgn.js";
+import verifyOrganizer from "../middlewares/verifyOrgn.js";
 import getMyEvents from "../Controllers/OrgEvents.js";
 import { deleteEvent } from "../Controllers/Deleteevent.js";
 import  { updateEvent } from "../Controllers/UpdateEvent.js";
